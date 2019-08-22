@@ -63,14 +63,14 @@ Function Get-AttributeType
 		}		
 		
 		$value = $null
-		if ($_.Value -ne $null)
+		if ($obj.Value -ne $null)
         {
-            $value = $_.Value
+            $value = $obj.Value
         } 
 		else {
-			if ($_.Values -ne $null)
+			if ($obj.Values -ne $null)
 			{
-				$value = $_.values[0]
+				$value = $obj.values[0]
 			}
 		}
 		
@@ -89,14 +89,14 @@ Function Get-AttributeType
 			
 			if ( $psObject.IsBooleanValue -eq $true) 
 			{
-				$psObject | Add-Member -MemberType NoteProperty -Name $_.AttributeName -Value $_.Value
+				$psObject | Add-Member -MemberType NoteProperty -Name $obj.AttributeName -Value $obj.Value
 			} else 
 			{
-				$psObject | Add-Member -MemberType NoteProperty -Name $_.AttributeName -Value $_.Value				
+				$psObject | Add-Member -MemberType NoteProperty -Name $obj.AttributeName -Value $obj.Value				
 			}
 			
 		} else {
-			$psObject | Add-Member -MemberType NoteProperty -Name $_.AttributeName -Value $null
+			$psObject | Add-Member -MemberType NoteProperty -Name $obj.AttributeName -Value $null
 		}		
 		
 		Write-Output $psObject		
